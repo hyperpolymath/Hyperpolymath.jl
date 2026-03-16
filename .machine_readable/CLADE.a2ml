@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Clade declaration — part of the gv-clade-index registry
+# See: https://github.com/hyperpolymath/gv-clade-index
+
+[identity]
+uuid = "8bc58e42-e39c-5c52-a60b-8ce36fd12000"
+primary-forge = "github"
+primary-owner = "hyperpolymath"
+canonical-name = "Hyperpolymath.jl"
+prefixed-name = "dx-Hyperpolymath.jl"
+
+[clade]
+primary = "dx"
+secondary = []
+assigned = "2026-03-16"
+rationale = ""
+
+[forges]
+github = "hyperpolymath/Hyperpolymath.jl"
+gitlab = "hyperpolymath/Hyperpolymath.jl"
+bitbucket = "hyperpolymath/Hyperpolymath.jl"
+
+[lineage]
+type = "standalone"
+parent = "Julia package — hyperpolymath core library"
+born = "2026-03-16"
