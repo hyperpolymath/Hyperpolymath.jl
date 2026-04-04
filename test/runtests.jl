@@ -48,3 +48,6 @@ using Test
     end
 
 end
+
+include("e2e_test.jl")
+include("property_test.jl")
