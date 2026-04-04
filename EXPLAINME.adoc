@@ -1,32 +1,134 @@
 // SPDX-License-Identifier: PMPL-1.0-or-later
 = Hyperpolymath.jl — Show Me The Receipts
+Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 :toc:
+:toclevels: 3
 :icons: font
 
-The README makes claims. This file backs them up.
+The README makes claims. This file backs them up with specific code locations,
+honest caveats, and enough trace information for an external reviewer to navigate
+the codebase cold.
 
-[quote, README]
+== Claim 1: Single entry point to install and load the entire Hyperpolymath Julia ecosystem at once
+
+[quote, README — Overview]
 ____
-Hyperpolymath.jl is a **metapackage** (a bundle) that provides a convenient way to install and load the entire Hyperpolymath Julia Ecosystem at once.
+Hyperpolymath.jl is a metapackage (a bundle) that provides a convenient way to
+install and load the entire Hyperpolymath Julia Ecosystem at once.
 ____
 
-== Technology Choices
+*How it works:* `src/Hyperpolymath.jl` is a single 77-line file. It contains
+nothing but `using` statements (one per sub-package) and corresponding `export`
+statements re-exporting each package module symbol. The sub-packages are
+organised into seven named layers via source comments:
 
-[cols="1,2"]
-|===
-| Technology | Learn More
+1. *Logic & Verification* — `Axiom`, `Axiology`, `SMTLib`, `ZeroProb`, `PolyglotFormalisms`
+2. *Security & Forensics* — `ProvenCrypto`, `InvestigativeJournalist`
+3. *History & Social Science* — `Cliodynamics`, `Cliometrics`, `Causals`, `ViableSystems`
+4. *Organising & Action* — `TradeUnionist`, `PRComms`, `Exnovation`, `BowtieRisk`
+5. *Mathematics & Play* — `JuliaKids`, `KnotTheory`, `Skein`, `HackenbushGames`, `Cladistics`
+6. *Orchestration & Meta* — `PostDisciplinary`, `JuliaPackageSpitter`, `MacroPower`, `ShellIntegration`, `MinixSDK`
+7. *The Metal Layer* — `LowLevel`, `SiliconCore`, `AcceleratorGate`, `QuantumCircuit`, `HardwareResilience`, `FirmwareAudit`
 
-| **Julia** | https://julialang.org
-|===
+There is no glue code, no conditional loading, and no registration — the file is
+a pure dependency aggregator.
+
+*Honest caveat:* Because this is a pure aggregator, loading `Hyperpolymath` in a
+fresh Julia environment will fail unless all 30+ sub-packages are installed.
+The package has no fallback or partial-load mode. In practice, selective
+installation (installing only the sub-packages you need) is the recommended path
+for anyone who does not need the full ecosystem.
+
+== Claim 2: Grouped by domain — 30+ packages spanning logic, security, history, mathematics, and the metal layer
+
+[quote, README — Contained Modules]
+____
+This metapackage re-exports: Axiom.jl, Axiology.jl, SMTLib.jl, ZeroProb.jl,
+PolyglotFormalisms.jl, ProvenCrypto.jl, InvestigativeJournalist.jl,
+Cliodynamics.jl, Cliometrics.jl, Causals.jl, TradeUnionist.jl, PRComms.jl,
+Exnovation.jl, BowtieRisk.jl, JuliaKids.jl, KnotTheory.jl, Skein.jl,
+HackenbushGames.jl, Cladistics.jl, PostDisciplinary.jl, JuliaPackageSpitter.jl,
+MacroPower.jl, ShellIntegration.jl, MinixSDK.jl, LowLevel.jl
+____
+
+*How it works:* Each layer boundary in `src/Hyperpolymath.jl` is delimited by a
+comment (`# --- 1. Logic & Verification ---` etc.). The grouping is cosmetic
+at the module level — Julia does not enforce layer boundaries at runtime — but it
+establishes the intended dependency topology for maintainers. The final `export`
+block re-exports each module symbol so that `using Hyperpolymath` makes every
+sub-package namespace available at the top level.
+
+*Honest caveat:* Re-exporting entire module namespaces from 30+ packages into a
+single namespace risks name collisions. The README recommends selective installation
+for production use and treats the full bundle as a research-convenience shortcut.
+
+== How It Is Checked
+
+Tests live in `test/runtests.jl`, `test/e2e_test.jl`, and `test/property_test.jl`.
+Because all sub-packages are unavailable in a standard CI environment, the tests
+work by reading the source file as text and asserting structural invariants:
+
+- `module Hyperpolymath` declaration appears exactly once
+- `end # module` is present
+- SPDX header is present on line 1
+- Required sub-package groups are declared (`using Axiom`, `using MacroPower`,
+  `using SiliconCore`, `using LowLevel`, etc.)
+- Every `using` statement contains a non-empty identifier after the keyword
+- Source file content is deterministic across 10 repeated reads (property test)
+- If sub-packages happen to be installed, a best-effort load is attempted and
+  the module symbol is verified with `@test_skip` fallback if unavailable
 
 == File Map
 
-[cols="1,2"]
+[cols="2,4"]
 |===
 | Path | What's There
 
-| `src/` | Source code
-| `test(s)/` | Test suite
+| `src/Hyperpolymath.jl`
+| Entire module. 7 `using` groups + 7 `export` blocks. No logic other than
+  re-exporting sub-package module symbols.
+
+| `test/runtests.jl`
+| Entry point. Runs structural tests and includes `e2e_test.jl` and
+  `property_test.jl`.
+
+| `test/e2e_test.jl`
+| End-to-end pipeline tests: file exists, module is well-formed, all required
+  sub-package declarations are present.
+
+| `test/property_test.jl`
+| Property-based structural invariants: deterministic reads, all `using`
+  statements name non-empty identifiers, SPDX header present.
+
+| `Project.toml`
+| Package identity and all 30+ sub-package dependencies enumerated. This is the
+  definitive list of what the bundle includes.
+
+| `LICENSE` / `LICENSES/`
+| PMPL-1.0-or-later full text.
+|===
+
+== Dogfooded Across The Account
+
+[cols="2,4"]
+|===
+| Repo | How Hyperpolymath.jl (or this pattern) appears
+
+| `developer-ecosystem/julia-ecosystem/`
+| The monorepo that houses all sub-packages as subdir packages; this standalone
+  repo is the published aggregator for them.
+
+| `statistease`
+| Primary consumer of the Julia ecosystem; imports individual packages from the
+  ecosystem rather than the full metapackage.
+
+| `PolyglotFormalisms.jl`
+| One of the five Logic & Verification sub-packages bundled here; has its own
+  standalone repo and is cross-tested with the metapackage.
+
+| `HackenbushGames.jl`, `Exnovation.jl`, etc.
+| Each standalone `.jl` repo in the account is a leaf that this package aggregates.
+  Any change to a leaf's public API must be reflected here.
 |===
 
 == Questions?
