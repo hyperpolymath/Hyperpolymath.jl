@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
-# (PMPL-1.0-or-later preferred; MPL-2.0 required for Julia ecosystem)
+# (MPL-2.0 preferred; MPL-2.0 required for Julia ecosystem)
 # E2E pipeline tests for Hyperpolymath.jl.
 # Hyperpolymath is an umbrella package; E2E tests validate the source file
 # structure and dependency declarations without requiring all sub-packages
@@ -61,7 +61,7 @@ using Test
         @test length(lines) >= 1
         first_line = lines[1]
         @test contains(first_line, "SPDX-License-Identifier")
-        @test contains(first_line, "PMPL-1.0-or-later")
+        @test contains(first_line, "MPL-2.0")
     end
 
     @testset "Round-trip consistency: file encoding is valid UTF-8" begin

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: PMPL-1.0-or-later
+// SPDX-License-Identifier: MPL-2.0
 = Hyperpolymath.jl — Show Me The Receipts
 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 :toc:
@@ -105,7 +105,7 @@ work by reading the source file as text and asserting structural invariants:
   definitive list of what the bundle includes.
 
 | `LICENSE` / `LICENSES/`
-| PMPL-1.0-or-later full text.
+| MPL-2.0 full text.
 |===
 
 == Dogfooded Across The Account

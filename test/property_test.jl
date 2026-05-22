@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
-# (PMPL-1.0-or-later preferred; MPL-2.0 required for Julia ecosystem)
+# (MPL-2.0 preferred; MPL-2.0 required for Julia ecosystem)
 # Property-based invariant tests for Hyperpolymath.jl.
 # As an umbrella package, properties cover structural invariants of the source.
 
@@ -14,7 +14,7 @@ using Test
             content = read(src_path, String)
             @test contains(content, "module Hyperpolymath")
             @test contains(content, "end # module")
-            @test contains(content, "SPDX-License-Identifier: PMPL-1.0-or-later")
+            @test contains(content, "SPDX-License-Identifier: MPL-2.0")
         end
     end
 
