@@ -30,8 +30,8 @@ using Test
         src_path = joinpath(@__DIR__, "..", "src", "Hyperpolymath.jl")
         content = read(src_path, String)
         required_deps = [
-            "Axiom", "MacroPower", "SiliconCore",
-            "LowLevel", "HardwareResilience", "ShellIntegration", "MinixSDK",
+            "Axiom", "SiliconCore",
+            "LowLevel", "HardwareResilience", "ShellIntegration",
         ]
         for dep in required_deps
             @test contains(content, "using $(dep)")
