@@ -32,12 +32,10 @@ using Test
 
         # Verify key dependency groups are declared
         @test contains(content, "using Axiom")
-        @test contains(content, "using MacroPower")
         @test contains(content, "using SiliconCore")
         @test contains(content, "using LowLevel")
         @test contains(content, "using HardwareResilience")
         @test contains(content, "using ShellIntegration")
-        @test contains(content, "using MinixSDK")
     end
 
     @testset "SPDX license header present" begin

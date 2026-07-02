@@ -28,7 +28,6 @@ using ZeroProb
 using PolyglotFormalisms
 
 # --- 2. Security & Forensics ---
-using ProvenCrypto
 using InvestigativeJournalist
 
 # --- 3. History & Social Science ---
@@ -44,7 +43,7 @@ using Exnovation
 using BowtieRisk
 
 # --- 5. Mathematics & Play ---
-using JuliaKids
+using JuliaForChildren
 using KnotTheory
 using Skein
 using HackenbushGames
@@ -53,9 +52,7 @@ using Cladistics
 # --- 6. Orchestration & Meta ---
 using PostDisciplinary
 using JuliaPackageSpitter
-using MacroPower
 using ShellIntegration
-using MinixSDK
 
 # --- 7. The Metal Layer ---
 using LowLevel
@@ -67,11 +64,11 @@ using FirmwareAudit
 
 # Re-export everything
 export Axiom, Axiology, SMTLib, ZeroProb, PolyglotFormalisms
-export ProvenCrypto, InvestigativeJournalist
+export InvestigativeJournalist
 export Cliodynamics, Cliometrics, Causals, ViableSystems
 export TradeUnionist, PRComms, Exnovation, BowtieRisk
-export JuliaKids, KnotTheory, Skein, HackenbushGames, Cladistics
-export PostDisciplinary, JuliaPackageSpitter, MacroPower, ShellIntegration, MinixSDK
+export JuliaForChildren, KnotTheory, Skein, HackenbushGames, Cladistics
+export PostDisciplinary, JuliaPackageSpitter, ShellIntegration
 export LowLevel, SiliconCore, AcceleratorGate, QuantumCircuit, HardwareResilience, FirmwareAudit
 
 end # module Hyperpolymath
