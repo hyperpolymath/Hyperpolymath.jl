@@ -24,10 +24,10 @@ statements re-exporting each package module symbol. The sub-packages are
 organised into seven named layers via source comments:
 
 1. *Logic & Verification* — `Axiom`, `Axiology`, `SMTLib`, `ZeroProb`, `PolyglotFormalisms`
-2. *Security & Forensics* — `ProvenCrypto`, `InvestigativeJournalist`
+2. *Security & Forensics* — `ProvenCrypto`, `InvestigativeJournalism`
 3. *History & Social Science* — `Cliodynamics`, `Cliometrics`, `Causals`, `ViableSystems`
-4. *Organising & Action* — `TradeUnionist`, `PRComms`, `Exnovation`, `BowtieRisk`
-5. *Mathematics & Play* — `JuliaKids`, `KnotTheory`, `Skein`, `HackenbushGames`, `Cladistics`
+4. *Organising & Action* — `TradeUnionism`, `PRComms`, `Exnovation`, `BowtieRisk`
+5. *Mathematics & Play* — `JuliaForChildren`, `KnotTheory`, `Skein`, `HackenbushGames`, `Cladistics`
 6. *Orchestration & Meta* — `PostDisciplinary`, `JuliaPackageSpitter`, `MacroPower`, `ShellIntegration`, `MinixSDK`
 7. *The Metal Layer* — `LowLevel`, `SiliconCore`, `AcceleratorGate`, `QuantumCircuit`, `HardwareResilience`, `FirmwareAudit`
 
@@ -45,9 +45,9 @@ for anyone who does not need the full ecosystem.
 [quote, README — Contained Modules]
 ____
 This metapackage re-exports: Axiom.jl, Axiology.jl, SMTLib.jl, ZeroProb.jl,
-PolyglotFormalisms.jl, ProvenCrypto.jl, InvestigativeJournalist.jl,
-Cliodynamics.jl, Cliometrics.jl, Causals.jl, TradeUnionist.jl, PRComms.jl,
-Exnovation.jl, BowtieRisk.jl, JuliaKids.jl, KnotTheory.jl, Skein.jl,
+PolyglotFormalisms.jl, ProvenCrypto.jl, InvestigativeJournalism.jl,
+Cliodynamics.jl, Cliometrics.jl, Causals.jl, TradeUnionism.jl, PRComms.jl,
+Exnovation.jl, BowtieRisk.jl, JuliaForChildren.jl, KnotTheory.jl, Skein.jl,
 HackenbushGames.jl, Cladistics.jl, PostDisciplinary.jl, JuliaPackageSpitter.jl,
 MacroPower.jl, ShellIntegration.jl, MinixSDK.jl, LowLevel.jl
 ____
