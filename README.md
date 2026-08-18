@@ -38,9 +38,9 @@ their subdirectories:
 
 ```julia
 using Pkg
-# Example: Only install Causals and InvestigativeJournalist
+# Example: Only install Causals and InvestigativeJournalism
 Pkg.add(url="https://github.com/your-org/julia-ecosystem.git", subdir="packages/Causals.jl")
-Pkg.add(url="https://github.com/your-org/julia-ecosystem.git", subdir="packages/InvestigativeJournalist.jl")
+Pkg.add(url="https://github.com/your-org/julia-ecosystem.git", subdir="packages/InvestigativeJournalism.jl")
 ```
 
 # Usage
@@ -49,9 +49,9 @@ Pkg.add(url="https://github.com/your-org/julia-ecosystem.git", subdir="packages/
 using Hyperpolymath
 
 # Now you can use EVERYTHING:
-# - InvestigativeJournalist for forensics
+# - InvestigativeJournalism for forensics
 # - Causals for inference
-# - JuliaKids for teaching
+# - JuliaForChildren for teaching
 # - LowLevel for assembly optimization
 # - PostDisciplinary to link them all together
 
@@ -70,19 +70,19 @@ This metapackage re-exports:
   class="jl">PolyglotFormalisms</a>
 
 - <a href="packages/ProvenCrypto.jl" class="jl">ProvenCrypto</a>,
-  <a href="packages/InvestigativeJournalist.jl"
-  class="jl">InvestigativeJournalist</a>
+  <a href="packages/InvestigativeJournalism.jl"
+  class="jl">InvestigativeJournalism</a>
 
 - <a href="packages/Cliodynamics.jl" class="jl">Cliodynamics</a>,
   <a href="packages/Cliometrics.jl" class="jl">Cliometrics</a>,
   <a href="packages/Causals.jl" class="jl">Causals</a>
 
-- <a href="packages/TradeUnionist.jl" class="jl">TradeUnionist</a>,
+- <a href="packages/TradeUnionism.jl" class="jl">TradeUnionism</a>,
   <a href="packages/PRComms.jl" class="jl">PRComms</a>,
   <a href="packages/Exnovation.jl" class="jl">Exnovation</a>,
   <a href="packages/BowtieRisk.jl" class="jl">BowtieRisk</a>
 
-- <a href="packages/JuliaKids.jl" class="jl">JuliaKids</a>,
+- <a href="packages/JuliaForChildren.jl" class="jl">JuliaForChildren</a>,
   <a href="packages/KnotTheory.jl" class="jl">KnotTheory</a>,
   <a href="packages/Skein.jl" class="jl">Skein</a>,
   <a href="packages/HackenbushGames.jl" class="jl">HackenbushGames</a>,
